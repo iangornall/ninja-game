@@ -7,7 +7,7 @@ let preload = function() {
   this.load.image('shuriken', 'assets/shuriken.png');
   this.load.image('tileset', 'assets/tileset.png');
   this.load.image('objects', 'assets/objects.png');
-  this.load.tilemapTiledJSON('map1', 'assets/level1.json')
+  this.load.tilemapTiledJSON('map1', 'assets/level1.json');
 }
 let create = function() {
   let map = this.make.tilemap({key: 'map1', tileWidth: 128, tileHeight: 128});
@@ -98,7 +98,8 @@ let config = {
     default: 'arcade',
     arcade: {
         gravity: { y: 3000 },
-        debug: false
+        debug: false,
+        tileBias: 64
     }
   },
   scene: {
