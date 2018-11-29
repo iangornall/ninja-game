@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="7" nextobjectid="12">
  <tileset firstgid="1" name="tiles" tilewidth="128" tileheight="128" tilecount="90" columns="10">
   <image source="tileset.png" width="1280" height="1152"/>
   <tile id="0">
@@ -886,4 +886,11 @@
 51,52,53,54,55,56,39,40,51,52,55,56,39,40,39,40,39,40,39,40,39,40,51,52,53,54,19,20,78,72,75,76,19,20,19,20,71,72,73,74,73,74,75,76,19,20,19,20,19,20,19,20,19,20,77,78,73,74,73,74,73,74,75,76
 </data>
  </layer>
+ <objectgroup id="6" name="Object Layer 1">
+  <object id="1" name="spawn" x="319.667" y="1247.67">
+   <point/>
+  </object>
+  <object id="9" name="exit" x="7891.33" y="1362" width="212.667" height="401.333"/>
+  <object id="10" name="enemy1" x="1029.33" y="1461.33" width="498.667" height="66.6667"/>
+ </objectgroup>
 </map>
