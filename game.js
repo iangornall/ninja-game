@@ -44,7 +44,7 @@ let create = function() {
   this.physics.add.collider(enemy, mainLayer);
   this.physics.add.collider(enemy, mainLayer2);
   enemy.setCollideWorldBounds(true);
-  this.physics.add.overlap(hero, enemy);
+  this.physics.add.collider(enemy, hero);
   this.anims.create({
     key: 'run',
     frames: this.anims.generateFrameNames('ninja', {
@@ -149,7 +149,7 @@ let config = {
     default: 'arcade',
     arcade: {
         gravity: { y: 3000 },
-        debug: true,
+        debug: false,
         overlapBias: 16,
         tileBias: 64
     }
