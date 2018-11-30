@@ -1,9 +1,50 @@
 let rectangle2;
-let hero;
+//let hero;
 let cursors;
 let shurikens;
 let enemy1Path;
 let enemy;
+let mapData = {
+  tilesets: ['tiles', 'objects'],
+  layers: [
+    {
+      layer: 'background',
+      tileset: 'tiles'
+    },
+    {
+      layer: 'doors',
+      tileset: 'objects'
+    },
+    {
+      layer: 'between',
+      tileset: 'objects'
+    },
+    {
+      layer: 'main',
+      tileset: 'tileset'
+    },
+    {
+      layer: 'main2',
+      tileset: 'objects'
+    }
+  ]
+}
+let buildMap = function(mapData, scene) {
+  let map = scene.make.tilemap({key: 'map1', tileWidth: 128, tileHeight: 128});
+  mapData.tilesets.forEach(tileset => {
+    map.addTilesetImage(tileset, tileset);
+  });
+  mapData.layers.forEach(layer => {
+    map.createStaticLayer(layer, tileset, 0, 0);
+  })
+}
+let buildHero = function(map, scene) {
+  let spawnPoint = map.findObject("objects", obj => obj.name === "spawn");
+  let hero = scene.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'ninja');
+  hero.setScale(0.3);
+  hero.setBounce(0.2);
+  return hero;
+}
 let preload = function() {
   this.load.atlas('ninja', 'assets/ninja.png', 'assets/ninja-array.json');
   this.load.atlas('zombieGirl', 'assets/zombie-girl.png', 'assets/zombie-girl.json');
@@ -12,11 +53,11 @@ let preload = function() {
   this.load.image('tileset', 'assets/tileset.png');
   this.load.image('objects', 'assets/objects.png');
   this.load.tilemapTiledJSON('map1', 'assets/level1.json');
-  
-
 }
 let create = function() {
-  let map = this.make.tilemap({key: 'map1', tileWidth: 128, tileHeight: 128});
+  // this.map = buildMap('map1', this)
+  map = this.make.tilemap({key: 'map1', tileWidth: 128, tileHeight: 128});
+  console.log(map);
   let tileset = map.addTilesetImage('tiles', 'tileset');
   let objects = map.addTilesetImage('objects', 'objects');
   let backgroundLayer = map.createStaticLayer('background', tileset, 0, 0);
@@ -26,25 +67,21 @@ let create = function() {
   let mainLayer2 = map.createStaticLayer('main2', objects, 0, 0);
   mainLayer.setCollisionByProperty({collides: true});
   mainLayer2.setCollisionByProperty({collides: true});
-  let spawnPoint = map.findObject("objects", obj => obj.name === "spawn");
-  console.log(spawnPoint);
-  hero = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'ninja');
-  hero.setScale(0.3);
-  hero.setBounce(0.2);
+  this.hero = buildHero(map, this);
   enemy1Path = map.findObject("objects", obj => obj.name === "enemy1");
   enemy = this.physics.add.sprite(enemy1Path.x + enemy1Path.width, enemy1Path.y, 'zombieGirl');
   enemy.y -= enemy.height
   let camera = this.cameras.main;
   camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels, true, true, true, true);
-  camera.startFollow(hero);
-  this.physics.add.collider(hero, mainLayer);
-  this.physics.add.collider(hero, mainLayer2);
-  hero.setCollideWorldBounds(true);
+  camera.startFollow(this.hero);
+  this.physics.add.collider(this.hero, mainLayer);
+  this.physics.add.collider(this.hero, mainLayer2);
+  this.hero.setCollideWorldBounds(true);
   this.physics.add.collider(enemy, mainLayer);
   this.physics.add.collider(enemy, mainLayer2);
   enemy.setCollideWorldBounds(true);
-  this.physics.add.collider(enemy, hero);
+  this.physics.add.collider(enemy, this.hero);
   this.anims.create({
     key: 'run',
     frames: this.anims.generateFrameNames('ninja', {
@@ -105,7 +142,18 @@ let create = function() {
   enemy.setVelocityX(-200);
   enemy.anims.play('zombieGirlWalk', true);
   enemy.flipX = true;
+  enemy.hp = 5;
   console.log(enemy.x, enemy.width, enemy1Path.x, enemy1Path.width);
+}
+
+let hitEnemy = function(enemy, shuriken) {
+  return function(){
+    enemy.hp -= 1;
+    if (enemy.hp <= 0) {
+      enemy.disableBody(true, true);
+    }
+    shuriken.disableBody(true, true);
+  }
 }
 let update = function() {
   if (enemy.x <= enemy1Path.x) {
@@ -117,27 +165,28 @@ let update = function() {
     enemy.flipX = true;
   }
   if (cursors.left.isDown){
-    hero.setVelocityX(-600);
-    hero.flipX = true;    
-    hero.body.onFloor() && hero.anims.play('run', true);
+    this.hero.setVelocityX(-600);
+    this.hero.flipX = true;    
+    this.hero.body.onFloor() && this.hero.anims.play('run', true);
   } else if (cursors.right.isDown) {
-    hero.setVelocityX(600);
-    hero.flipX = false;
-    hero.body.onFloor() && hero.anims.play('run', true);
+    this.hero.setVelocityX(600);
+    this.hero.flipX = false;
+    this.hero.body.onFloor() && this.hero.anims.play('run', true);
   } else {
-    hero.setVelocityX(0);
-    hero.body.onFloor() && hero.anims.play('idle', true);
+    this.hero.setVelocityX(0);
+    this.hero.body.onFloor() && this.hero.anims.play('idle', true);
   }
-  if (cursors.up.isDown && hero.body.onFloor()) {
-    hero.anims.play('jump', true);
-    hero.setVelocityY(-2000);
+  if (cursors.up.isDown && this.hero.body.onFloor()) {
+    this.hero.anims.play('jump', true);
+    this.hero.setVelocityY(-2000);
   }
   if (Phaser.Input.Keyboard.JustDown(cursors.space))  {
-    console.log(hero);
-    let shuriken = this.physics.add.sprite(hero.flipX ? hero.x - 50 : hero.x + 50 / 2, hero.y, 'shuriken');
+    console.log(this.hero);
+    let shuriken = this.physics.add.sprite(this.hero.flipX ? this.hero.x - 50 : this.hero.x + 50 / 2, this.hero.y, 'shuriken');
+    this.physics.add.collider(enemy, shuriken, hitEnemy(enemy, shuriken), null, this);
     shuriken.setScale(0.05);
     shuriken.body.setAllowGravity(false);
-    hero.flipX ? shuriken.setVelocityX(-1000) : shuriken.setVelocityX(1000);
+    this.hero.flipX ? shuriken.setVelocityX(-1000) : shuriken.setVelocityX(1000);
   }
   //if (shuriken.x 
 }
