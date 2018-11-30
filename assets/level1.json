@@ -7,6 +7,17 @@
          "id":2,
          "name":"background",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisions",
+                 "type":"bool",
+                 "value":false
+                }, 
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"tiles"
+                }],
          "type":"tilelayer",
          "visible":false,
          "width":64,
@@ -19,6 +30,17 @@
          "id":5,
          "name":"doors",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisions",
+                 "type":"bool",
+                 "value":false
+                }, 
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"objects"
+                }],
          "type":"tilelayer",
          "visible":false,
          "width":64,
@@ -31,6 +53,17 @@
          "id":4,
          "name":"between",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisions",
+                 "type":"bool",
+                 "value":false
+                }, 
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"objects"
+                }],
          "type":"tilelayer",
          "visible":false,
          "width":64,
@@ -43,6 +76,17 @@
          "id":3,
          "name":"main",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisions",
+                 "type":"bool",
+                 "value":true
+                }, 
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"tiles"
+                }],
          "type":"tilelayer",
          "visible":false,
          "width":64,
@@ -55,6 +99,17 @@
          "id":7,
          "name":"main2",
          "opacity":1,
+         "properties":[
+                {
+                 "name":"collisions",
+                 "type":"bool",
+                 "value":true
+                }, 
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"objects"
+                }],
          "type":"tilelayer",
          "visible":true,
          "width":64,
@@ -101,13 +156,19 @@
                  "y":1461.33333333333
                 }],
          "opacity":1,
+         "properties":[
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":""
+                }],
          "type":"objectgroup",
          "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
