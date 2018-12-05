@@ -1,23 +1,8 @@
-import preload from './preload';
-import create from './create';
-import update from './update';
-let config = {
+import 'phaser';
+
+export default {
   type: Phaser.AUTO,
+  parent: 'game',
   width: 1366,
-  height: 768,
-  physics: {
-    default: 'arcade',
-    arcade: {
-        gravity: { y: 3000 },
-        debug: false,
-        overlapBias: 16,
-        tileBias: 64
-    }
-  },
-  scene: {
-      preload: preload,
-      create: create,
-      update: update
-  }
+  height: 768
 };
-export default config;

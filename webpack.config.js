@@ -10,7 +10,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
         publicPath: '/build/',
-        filename: 'project.bundle.js'
+        filename: 'project.bundle.js',
+        sourceMapFilename: 'project.bundle.js.map'
     },
 
     module: {
@@ -21,7 +22,7 @@ module.exports = {
           }
         ]
     },
-
+    devtool: 'eval-source-map',
     plugins: [
         new webpack.DefinePlugin({
             'CANVAS_RENDERER': JSON.stringify(true),
