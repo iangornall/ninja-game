@@ -11,7 +11,11 @@ let create = function(scene) {
   buildNinjaAnimations(scene);
   buildZombieGirlAnimations(scene);
   scene.hero = buildHero(scene);
-  scene.enemy = buildEnemy('enemy1', scene);
+  scene.enemies = [];
+  for(let i = 0; i < 3; i++){
+    scene.enemies.push(buildEnemy('enemy' + (i+1), scene))
+  }
+  //scene.enemy = buildEnemy('enemy1', scene);
   setupCamera(scene);
   setupCollisions(scene);
   scene.cursors = scene.input.keyboard.createCursorKeys();

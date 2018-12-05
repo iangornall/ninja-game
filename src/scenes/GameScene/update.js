@@ -3,7 +3,9 @@ import updateHero from './update/updateHero';
 import updateShuriken from './update/updateShuriken';
 
 let update = function(scene) {
-  updateEnemy(scene.enemy);
+  scene.enemies.forEach(enemy => {
+    updateEnemy(enemy);
+  });
   updateHero(scene.cursors, scene.hero);
   updateShuriken(scene);
 }

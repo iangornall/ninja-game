@@ -19,7 +19,7 @@
                  "value":"tiles"
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":64,
          "x":0,
          "y":0
@@ -42,7 +42,7 @@
                  "value":"objects"
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":64,
          "x":0,
          "y":0
@@ -65,7 +65,7 @@
                  "value":"objects"
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":64,
          "x":0,
          "y":0
@@ -88,7 +88,7 @@
                  "value":"tiles"
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":64,
          "x":0,
          "y":0
@@ -154,6 +154,28 @@
                  "width":498.666666666667,
                  "x":1029.33333333333,
                  "y":1461.33333333333
+                }, 
+                {
+                 "height":68.6666666666665,
+                 "id":13,
+                 "name":"enemy2",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":496.666666666667,
+                 "x":2824,
+                 "y":1450
+                }, 
+                {
+                 "height":91,
+                 "id":14,
+                 "name":"enemy3",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":559,
+                 "x":6920,
+                 "y":1694
                 }],
          "opacity":1,
          "properties":[
@@ -163,12 +185,12 @@
                  "value":""
                 }],
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":13,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
