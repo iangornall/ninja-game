@@ -1,6 +1,3 @@
-import preload from './preload';
-import create from './create';
-import update from './update';
 let config = {
   type: Phaser.AUTO,
   width: 1366,
