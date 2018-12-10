@@ -4,6 +4,8 @@ let buildHero = function(scene) {
   hero.setScale(0.3);
   hero.setBounce(0.2);
   hero.setCollideWorldBounds(true);
+  hero.jumpSound = scene.sound.add('jumpSound');
+  hero.throwSound = scene.sound.add('throwSound');
   return hero;
 }
 export default buildHero;

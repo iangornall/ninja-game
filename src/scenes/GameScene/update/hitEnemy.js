@@ -5,6 +5,7 @@ let hitEnemy = function(enemy, shuriken) {
       enemy.disableBody(true, true);
     }
     shuriken.disableBody(true, true);
+    enemy.dyingSound.play();
   }
 }
 export default hitEnemy;

@@ -14,6 +14,7 @@ let updateHero = function(cursors, hero) {
   if (cursors.up.isDown && hero.body.onFloor()) {
     hero.anims.play('jump', true);
     hero.setVelocityY(-2000);
+    hero.jumpSound.play();
   }
 }
 export default updateHero;

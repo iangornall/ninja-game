@@ -11,6 +11,7 @@ let buildEnemy = function(name, scene) {
   enemy.anims.play('zombieGirlWalk', true);
   enemy.flipX = true;
   enemy.hp = 5;
+  enemy.dyingSound = scene.sound.add('dyingSound');
   return enemy;
 }
 export default buildEnemy;
