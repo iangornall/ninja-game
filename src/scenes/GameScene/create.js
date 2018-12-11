@@ -8,8 +8,6 @@ import setupCollisions from './create/setupCollisions';
 
 let create = function(scene) {
   scene.map = buildMap('map1', scene);
-  scene.music = scene.sound.add('level1Music');
-  scene.music.play('', {loop: true});
   buildNinjaAnimations(scene);
   buildZombieGirlAnimations(scene);
   scene.hero = buildHero(scene);
