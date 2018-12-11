@@ -1,3 +1,5 @@
+import addDeathTween from './addDeathTween';
+
 let buildEnemy = function(name, scene) {
   let enemy = {};
   let path = scene.map.findObject("objects", obj => obj.name === name);
@@ -12,6 +14,7 @@ let buildEnemy = function(name, scene) {
   enemy.flipX = true;
   enemy.hp = 5;
   enemy.dyingSound = scene.sound.add('dyingSound');
+  addDeathTween(enemy, scene);
   return enemy;
 }
 export default buildEnemy;
