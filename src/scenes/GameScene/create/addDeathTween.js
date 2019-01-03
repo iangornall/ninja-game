@@ -5,10 +5,13 @@ let addDeathTween = (target, scene) => {
     scaleY: 5,
     alpha: 0,
     duration: 300,
-    paused: true
-  });
-  target.deathTween.setCallback("complete", () => {
+    paused: true,
+    onStart: () => {
+      target.disableBody(true);
+    },
+    onComplete: () => {
       target.disableBody(true, true);
-    });
+    },
+  });
 }
 export default addDeathTween;

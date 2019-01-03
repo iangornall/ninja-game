@@ -7,7 +7,7 @@ let config = {
     arcade: {
         gravity: { y: 3000 },
         debug: false,
-        overlapBias: 16,
+        overlapBias: 64,
         tileBias: 64
     }
   }
