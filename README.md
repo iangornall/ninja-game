@@ -1,4 +1,4 @@
-# Atlanta GEMS (developed under codename: Order 66)
+# Ninja vs Zombies (in Space)
 
 ## Live Demo
 [Ninja vs. Zombies (in Space)](https://iangornall.github.io/ninja-game/)
