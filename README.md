@@ -77,6 +77,10 @@ This is my first major solo project.
   
   One big challenge was when I put the zombies in the game.  I wanted them to move along a set path, but not have to hard code the path for each one.  I was able to set a rectangle object using tiled, and use the dimensions of that rectangle to set the enemies' paths.
 
+  * Challenge #6: Zombies never die!
+  
+  A huge issue for me was when I put a death tween on the zombie, the zombie would disappear from view, but was still an active object on the screen colliding with our hero.  To fix this I had to remove the physical presence of the zombie at the beginning of the tween and then the display as well at the end of the tween so it was completely removed from the scene.  I was able to find several functions that could be set on the tween to run at different times.
+
 ## MVP (Minimum Viable Product)
 Since this was a project primarily designed to learn the phaser framework, at minimum I wanted a game where a user could control the movement of a character
 
