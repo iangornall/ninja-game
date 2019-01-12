@@ -74,6 +74,7 @@ This is my first major solo project.
   A huge frustration occurred because I was using such large tiles and sprites.  My ninja kept falling through the floor whenever it landed with a great amount of velocity.  Once again I had to dig through the Phaser 3 documentation.  I found a setting for the arcade physics configuration called TileBias.  Setting this higher prevented my character from falling through objects.
 
   * Challenge #5: Zombies out of control!
+  
   One big challenge was when I put the zombies in the game.  I wanted them to move along a set path, but not have to hard code the path for each one.  I was able to set a rectangle object using tiled, and use the dimensions of that rectangle to set the enemies' paths.
 
 ## MVP (Minimum Viable Product)
